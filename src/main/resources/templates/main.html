@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Поїхали з нами</title>
+    <meta name="description" content="Loren">
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="style.css">
+    <!--  <script src="https://d33wubrfki0l68.cloudfront.net/js/12e3ca424c3c55e3d306e6423ed9e81f260dd657/aquamarine/js/navbar-ontop.js"></script>-->
+
+    <script src="https://d33wubrfki0l68.cloudfront.net/js/fe6311b3c294cba469a3939f21603640522c41e5/aquamarine/js/animate-in.js"></script>
+</head>
+<body>
+<header class="main-background">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top " id="nav-on-scroll">
+        <div class="adress container-fluid collapse navbar-collapse">
+
+
+                <p id="adress" class="text-white float-l">
+                    <i class="fa fa-map-marker color-orange" aria-hidden="true"></i>
+                    <span>м.Львів</span> пл. Старий Ринок 8
+                </p>
+            <a class="text-white float-r" href="tel:+380672842007">
+                <i class="fa fa-phone color-orange" aria-hidden="true"></i>
+                (067)-284-20-07
+            </a>
+        </div>
+        <div class="container-fluid">
+                <a class="navbar-brand" href="http://localhost:8080">
+            <img height="40px" src="icon.png">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/">ГОЛОВНА <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="hot">ГАРЯЧІ ПРОПОЗИЦІЇ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="reviews">ВІДГУКИ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">КОНТАКТИ</a>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+
+    </nav>
+    <div class="py-5 text-center">
+        <div  class="py-5 main-logo ">
+            <img id="mainLogo" src="mainLogo.png">
+        </div>
+        <div class="p-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 bg-orange my-4 main-form">
+                        <h4>Заповніть цю форму, щоб отримати індивідуальну пропозицію!</h4>
+                        <form th:action="@{/send}" method="post">
+
+                                <input type="text" name="name" class="col-md-5" placeholder="Ім’я">
+                                <input type="text" name="phoneNumber" class="col-md-5 " placeholder="Телефон">
+                                <input type="submit" class="btn btn-primary">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<main>
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <h2>Гарячі пропозиції</h2>
+        <!--<div class="arrow-section">-->
+            <!--<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">-->
+                <!--<span class="next-icon" aria-hidden="true"></span>-->
+                <!--<span class="sr-only">Next</span>-->
+            <!--</a>-->
+            <!--<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">-->
+                <!--<span class="prev-icon" aria-hidden="true"></span>-->
+                <!--<span class="sr-only">Previous</span>-->
+            <!--</a>-->
+        <!--</div>-->
+        <div class="carousel-inner" role="listbox">
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <div class="carousel-item active" >
+                <div class="active-first">
+                    <img class="d-block w-100" th:src="${hotTours.get(hotTours.size()-2).first.photo}" alt="Start Slideshow">
+                    <p th:text="${hotTours.get(hotTours.size()-2).first.country}"></p>
+                    <p th:text="${hotTours.get(hotTours.size()-2).first.hotel}"></p>
+                    <p th:text="${hotTours.get(hotTours.size()-2).first.date}"></p>
+                    <p th:text="${hotTours.get(hotTours.size()-2).first.food}"></p>
+                    <p th:text="${hotTours.get(hotTours.size()-2).first.price}"></p>
+                    <button class="hot-button">Дізнатися більше</button>
+                </div>
+                <div >
+                    <img class="d-block w-100" th:src="${hotTours.get(hotTours.size()-2).second.photo}" alt="Start Slideshow">
+                    <p th:text="${hotTours.get(hotTours.size()-2).second.country}"></p>
+                    <p th:text="${hotTours.get(hotTours.size()-2).second.hotel}"></p>
+                    <p th:text="${hotTours.get(hotTours.size()-2).second.date}"></p>
+                    <p th:text="${hotTours.get(hotTours.size()-2).second.food}"></p>
+                    <p th:text="${hotTours.get(hotTours.size()-2).second.price}"></p>
+                    <button class="hot-button">Дізнатися більше</button>
+                </div>
+                <div>
+                    <img class="d-block w-100" th:src="${hotTours.get(hotTours.size()-2).third.photo}" alt="Start Slideshow">
+                    <p th:text="${hotTours.get(hotTours.size()-2).third.country}"></p>
+                    <p th:text="${hotTours.get(hotTours.size()-2).third.hotel}"></p>
+                    <p th:text="${hotTours.get(hotTours.size()-2).third.date}"></p>
+                    <p th:text="${hotTours.get(hotTours.size()-2).third.food}"></p>
+                    <p th:text="${hotTours.get(hotTours.size()-2).third.price}"></p>
+                    <button class="hot-button">Дізнатися більше</button>
+                </div>
+            </div>
+
+            <div class="carousel-item" id="test"  th:each="hotTour : ${hotTours}">
+                <div  >
+                    <img class="d-block w-100" th:src="${hotTour.first.getPhoto()}" alt="Start Slideshow">
+                    <p th:text="${hotTour.first.getCountry()}"></p>
+                    <p th:text="${hotTour.first.getHotel()}"></p>
+                    <p th:text="${hotTour.first.getDate()}"></p>
+                    <p th:text="${hotTour.first.getFood()}"></p>
+                    <p th:text="${hotTour.first.getPrice()}"></p>
+                    <button class="hot-button">Дізнатися більше</button>
+                </div>
+                <div >
+                    <img class="d-block w-100" th:src="${hotTour.second.getPhoto()}" alt="Start Slideshow">
+                    <p th:text="${hotTour.second.getCountry()}"></p>
+                    <p th:text="${hotTour.second.getHotel()}"></p>
+                    <p th:text="${hotTour.second.getDate()}"></p>
+                    <p th:text="${hotTour.second.getFood()}"></p>
+                    <p th:text="${hotTour.second.getPrice()}"></p>
+                    <button class="hot-button">Дізнатися більше</button>
+                </div>
+                <div>
+                    <img class="d-block w-100" th:src="${hotTour.third.getPhoto()}" alt="Start Slideshow">
+                    <p th:text="${hotTour.third.getCountry()}"></p>
+                    <p th:text="${hotTour.third.getHotel()}"></p>
+                    <p th:text="${hotTour.third.getDate()}"></p>
+                    <p th:text="${hotTour.third.getFood()}"></p>
+                    <p th:text="${hotTour.third.getPrice()}"></p>
+                    <button class="hot-button">Дізнатися більше</button>
+                </div>
+            </div>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="next-icon float-r" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+    </div>
+</main>
+
+
+<div class="pt-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center h1 text-dark">Heading</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <img class="img-fluid d-block mb-4 w-100 img-thumbnail" src="header.jpg"> </div>
+            <div class="col-md-7">
+                <h2 class="text-primary pt-3">Article subtitle #2</h2>
+                <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-md-7">
+                <h2 class="text-primary">Article subtitle #1</h2>
+                <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+            <div class="col-md-5 align-self-center">
+                <img class="img-fluid d-block w-100 img-thumbnail" src="header.jpg"> </div>
+        </div>
+    </div>
+</div>
+<div class=" text-center why-we">
+    <div class="why-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="pb-3 color-orange">Чому обирають нас?</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="text-right col-md-6">
+                <div class="row my-5">
+                    <div class="col-2  col-2 text-center"><i class="d-block fa fa-university fa-3x" aria-hidden="true"></i></div>
+                    <div class="col-10 text-left order-lg-1">
+                        <h4 class="text-primary">Більше 300 офісів</h4>
+                        <p>«Поїхали з нами» - найбільша мережа  серед туристичних агенцій.  Де б ви не знаходилися, офіси «Поїхали з нами» завжди поруч.</p>
+                    </div>
+                </div>
+                <div class="row my-5">
+                    <div class="col-2  col-2 text-center"><i class="d-block fa fa-globe fa-3x" aria-hidden="true"></i></div>
+                    <div class="col-10 text-left order-lg-1">
+                        <h4 class="text-primary">Знаємо, що продаємо</h4>
+                        <p> Наші менеджери подорожують не менше 2-х разів на рік та інспектують готелі. Ви завжди знаєте, який відпочинок вас чекає.</p>
+                    </div>
+                </div>
+                <div class="row my-5">
+                    <div class="col-2  col-2 text-center"><i class="d-block fa  fa-comment fa-3x"></i></div>
+                    <div class="col-10 text-left order-lg-1">
+                        <h4 class="text-primary">Підтримка 24/7</h4>
+                        <p>Під час відпочинку ви завжди можете розраховувати на цілодобову підтримку в разі виникнення питань.</p>
+                    </div>
+                </div>
+                <div class="row my-5">
+                    <div class="col-2 text-center"><i class="d-block fa fa-thumbs-o-up fa-3x" aria-hidden="true"></i></div>
+                    <div class="col-10 text-left">
+                        <h4 class="text-primary">Нам довіряють. 96% задоволених туристів.</h4>
+                    </div>
+                </div>
+                <div class="row my-5">
+                    <div class="col-2 text-center"><i class="d-block fa fa-h-square fa-3x" aria-hidden="true"></i></div>
+                    <div class="col-10">
+                        <h4 class="text-primary">Тури в 60 000 готелів по всьому світу.</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="text-left col-md-6">
+                <div class="row my-5">
+                    <div class="col-2 text-center"><i class="d-block fa fa-handshake-o fa-3x" aria-hidden="true"></i></div>
+                    <div class="col-10">
+                        <h4 class="text-primary">Надійна співпраця</h4>
+                        <p>Працюємо лише з надійними партнерами, щоб пропонувати кращі тури для наших улюблених клієнтів.</p>
+                    </div>
+                </div>
+                <div class="row my-5">
+                    <div class="col-2 text-center"><i class="d-block fa fa-safari fa-3x" aria-hidden="true"></i></div>
+                    <div class="col-10">
+                        <h4 class="text-primary">Актуальні ціни</h4>
+                        <p> Ми в режимі реального часу моніторимо ціни від туроператорів, щоб на сайті відображалася актуальна вартість турів.</p>
+                    </div>
+                </div>
+                <div class="row my-5">
+                    <div class="col-2 text-center"><i class="d-block fa fa-credit-card fa-3x" aria-hidden="true"></i></div>
+                    <div class="col-10">
+                        <h4 class="text-primary">Тур в кредит</h4>
+                        <p>Побачили тур своєї мрії, але не має можливості оплатити все відразу?Не проблема: в нас завжди можна придбати тур в кредит. Відпочивайте зараз - а платіть пізніше!</p>
+                    </div>
+                </div>
+                <div class="row my-5">
+                    <div class="col-2 text-center"><i class="d-block fa fa-usd fa-3x" aria-hidden="true"></i></div>
+                    <div class="col-10">
+                        <h4 class="text-primary">Страхівка від невиїзду за бажанням клієнта.</h4>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+</div>
+
+
+<div class="py-4 text-white partners">
+    <div class="container-fluid">
+        <h3>Наші партнери</h3>
+        <div class="row">
+            <div class="partners-wrapper">
+            <div class="partners-img">
+                <img src="anex.png" alt="anexLogo">
+            </div>
+            <div class="partners-img">
+                <img src="coral.png" alt="coralLogo">
+            </div>
+            <div class="partners-img">
+                <img src="join.png" alt="joinupLogo">
+            </div>
+            <div class="partners-img">
+                <img src="mouzenidis.png" alt="mouzendisLogo">
+            </div>
+            <div class="partners-img">
+                <img src="nktar3rf.nxm.jpg" alt="tuiLogo">
+            </div>
+            <div class="partners-img">
+                <img src="pegas.jpg" alt="pegasLogo">
+            </div>
+            <div class="partners-img">
+                <img src="teztour_logo.png" alt="teztourLogo">
+            </div>
+            <div class="partners-img">
+                <img src="xsapxmap.pht.png" alt="tpgLogo">
+            </div>
+            <div class="partners-img">
+                <img src="tourist-club.png" alt="tourist-clubLogo">
+            </div>
+         </div>
+
+        </div>
+    </div>
+</div>
+<!-- Footer -->
+<footer class="pt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-4 col-md-1 align-self-center my-3">
+                <a href="https://www.facebook.com" target="blank"><i class="fa fa-fw fa-facebook fa-3x text-white"></i></a>
+            </div>
+            <div class="col-4 col-md-1 align-self-center my-3">
+                <a href="https://twitter.com" target="blank"><i class="fa fa-fw fa-twitter fa-3x text-white"></i></a>
+            </div>
+            <div class="col-4 col-md-1 align-self-center my-3">
+                <a href="https://www.instagram.com/poihalyznamy.lviv/?hl=uk" target="blank"><i class="fa fa-fw fa-instagram fa-3x text-white"></i></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 my-3 text-center">
+                <p class="text-muted">©2019</p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- JavaScript dependencies -->
+<script src="script.js"></script>
+<script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- Script: Smooth scrolling between anchors in the same page -->
+
+
+</body></html>

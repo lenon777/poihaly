@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/hot/create}" method="post">
+    <label>Фото</label>
+    <input type="text" name="photo" title="photo">
+    <label>Країна</label>
+    <input type="text" name="country" title="country">
+    <label>Готель</label>
+    <input type="text" name="hotel" title="hotel">
+    <label>Дата</label>
+    <input type="text" name="date" title="date">
+    <label>Харчування</label>
+    <input type="text" name="food" title="food">
+    <label>Ціна</label>
+    <input type="number" name="price" title="price">
+    <input type="submit">
+</form>
+
+<div th:each="hotTour : ${hotTours}">
+    <form th:action="'/hot/delete/'+${hotTour.getId()}" method="post">
+        <p th:text="${hotTour.getCountry()}"></p>
+        <p th:text="${hotTour.getHotel()}"></p>
+    <input type="submit" th:value="Видалити">
+    </form>
+</div>
+
+</body>
+</html>
